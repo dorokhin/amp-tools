@@ -1,5 +1,5 @@
 import unittest
-from amp import TransformHtmlToAmp
+from amp_tools import TransformHtmlToAmp
 
 
 class TestTransformHtmlToAmp(unittest.TestCase):

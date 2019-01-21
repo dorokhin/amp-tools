@@ -8,10 +8,10 @@ import io
 import os
 import sys
 from shutil import rmtree
-from amp import constants
+from amp_tools import constants
 from setuptools import find_packages, setup, Command
 
-NAME = 'amp'
+NAME = 'amp_tools'
 DESCRIPTION = 'Python AMP Library'
 URL = 'https://github.com/dorokhin/amp-tools'
 EMAIL = 'andrew@dorokhin.moscow'
