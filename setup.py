@@ -24,7 +24,9 @@ REQUIRED = [
 ]
 
 # What packages are optional?
-EXTRAS = {}
+EXTRAS = {
+    'coverage', 'codecov'
+}
 
 
 here = os.path.abspath(os.path.dirname(__file__))
