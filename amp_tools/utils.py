@@ -6,7 +6,6 @@ from PIL import Image
 from validators.url import url
 import requests
 from io import BytesIO
-from urllib.parse import urlparse
 from .constants import AMP_INVALID_ELEMENTS
 
 
@@ -31,21 +30,22 @@ class TransformHtmlToAmp:
             return url_src
         return url_prefix + url_src
 
+    @staticmethod
+    def get_image_size(image_url):
+        # get image size from remote
+        r = requests.get(image_url, stream=True)
+        if r.status_code == 200:
+            with Image.open(BytesIO(r.content)) as img:
+                return img.size
+
     def transform_img_tags(self, el):
         for tag in el.xpath('//img'):
             tag.tag = 'amp-img'
-            tag.attrib['src'] = tag.attrib['src']
+            if not tag.attrib['width'] or not tag.attrib['height']:
+                width, height = self.get_image_size(self.construct_url(tag.attrib['src'], url_prefix=self.url_prefix))
+                tag.attrib['width'] = str(width)
+                tag.attrib['height'] = str(height)
 
-            # get image size from remote
-            r = requests.get(self.construct_url(tag.attrib['src'], url_prefix=self.url_prefix), stream=True)
-            width = None
-            height = None
-            if r.status_code == 200:
-                with Image.open(BytesIO(r.content)) as img:
-                    width, height = img.size
-
-            tag.attrib['width'] = str(width)
-            tag.attrib['height'] = str(height)
             tag.attrib['layout'] = 'responsive'
             self.remove_attribute(tag, 'class')
 
