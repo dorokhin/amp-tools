@@ -1,4 +1,5 @@
 import unittest
+from lxml import html
 from unittest import mock
 from amp_tools import TransformHtmlToAmp
 from amp_tools.tests.utils import mocked_requests_get
@@ -25,6 +26,19 @@ class TestTransformHtmlToAmp(unittest.TestCase):
         width, height = TransformHtmlToAmp.get_image_size(self.image_url)
         self.assertEqual(width, 200)
         self.assertEqual(height, 50)
+
+    def test_transform_span_to_div_img_to_amp_img(self):
+        """
+        Test:
+        change <span> tag to <div>,
+        change <img> tag to <amp-img>
+        """
+        html_elements = '<span class="test-class"><form class="form-test"></form><img src="media/test.png" ' \
+                        'width="300" height="220"></span>'
+        html_result = b'<div class="amp-text"><amp-img src="media/test.png" width="300" height="220" ' \
+                      b'layout="responsive"></amp-img></div>'
+        transformed_tag = TransformHtmlToAmp(html_elements)()
+        self.assertEqual(transformed_tag, html_result)
 
 
 if __name__ == '__main__':
