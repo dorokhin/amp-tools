@@ -28,7 +28,9 @@ class TransformHtmlToAmp:
     def construct_url(url_src, url_prefix=None):
         if url(url_src):
             return url_src
-        return url_prefix + url_src
+        elif url_prefix:
+            return url_prefix + url_src
+        return url_src
 
     @staticmethod
     def get_image_size(image_url):
@@ -41,7 +43,10 @@ class TransformHtmlToAmp:
     def transform_img_tags(self, el):
         for tag in el.xpath('//img'):
             tag.tag = 'amp-img'
-            if not tag.attrib['width'] or not tag.attrib['height']:
+            try:
+                if not tag.attrib['width'] or not tag.attrib['height']:
+                    pass
+            except KeyError as e:
                 width, height = self.get_image_size(self.construct_url(tag.attrib['src'], url_prefix=self.url_prefix))
                 tag.attrib['width'] = str(width)
                 tag.attrib['height'] = str(height)

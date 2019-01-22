@@ -40,6 +40,15 @@ class TestTransformHtmlToAmp(unittest.TestCase):
         transformed_tag = TransformHtmlToAmp(html_elements)()
         self.assertEqual(transformed_tag, html_result)
 
+    @mock.patch('requests.get', side_effect=mocked_requests_get)
+    def test_transform_span_to_div_img_to_amp_img_without_image_dimensions(self, mock_get):
+        html_elements = '<span class="test-class"><form class="form-test"></form>' \
+                        '<img src="https://dorokhin.moscow/media/test.png"></span>'
+        html_result = b'<div class="amp-text"><amp-img src="https://dorokhin.moscow/media/test.png" ' \
+                      b'width="200" height="50" layout="responsive"></amp-img></div>'
+        transformed_tag = TransformHtmlToAmp(html_elements)()
+        self.assertEqual(transformed_tag, html_result)
+
 
 if __name__ == '__main__':
     unittest.main()
