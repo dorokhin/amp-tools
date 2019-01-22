@@ -7,10 +7,10 @@ python:
   - "3.7-dev"  # 3.7 development branch
 # command to install dependencies
 install:
-  - pip install .
+  - pip install tox-travis
 # command to run tests
 script:
-  - python -m unittest
+  - tox
   - coverage run --source amp_tools unittest
   - coverage report
   - codecov
