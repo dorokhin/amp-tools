@@ -22,6 +22,6 @@ tox==3.7.0
 tqdm==4.29.1
 twine==1.12.1
 urllib3==1.24.1
-validators==0.12.4
+validators==0.12.6
 virtualenv==16.2.0
 webencodings==0.5.1
