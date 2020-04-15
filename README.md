@@ -31,7 +31,3 @@ b'<div class="amp-text"><amp-img src="media/test.png" width="300" height="220" l
 
 ```
 
-
-
-## License
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdorokhin%2Famp-tools.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdorokhin%2Famp-tools?ref=badge_large)
