@@ -1,13 +1,13 @@
 bleach==3.3.0
 certifi==2018.11.29
 chardet==3.0.4
-codecov==2.0.15
+codecov==2.0.16
 coverage==4.5.2
 decorator==4.3.0
 docutils==0.14
 filelock==3.0.10
 idna==2.8
-lxml==4.6.5
+lxml==4.9.1
 pillow>=8.3.2
 pkginfo==1.5.0.1
 pluggy==0.8.1
