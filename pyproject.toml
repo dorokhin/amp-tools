@@ -1,0 +1,37 @@
+[project]
+name = "amp-tools"
+version = "0.0.5"
+description = "This library converts html to pure AMP."
+authors = [
+    "Andrew Dorokhin <andrew@dorokhin.moscow>"
+]
+license = "MIT"
+readme = "README.md"
+python = "^3.5"
+homepage = "https://github.com/dorokhin/amp-tools"
+repository = "https://github.com/dorokhin/amp-tools"
+documentation = "https://github.com/dorokhin/amp-tools"
+
+keywords = ["accelerated-mobile-pages", "amp", "html5"]
+
+classifiers = [
+        # Trove classifiers
+        # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: Implementation :: CPython',
+        'Programming Language :: Python :: Implementation :: PyPy'
+]
+
+# Requirements
+[dependencies]
+lxml = "^4.9"
+pillow = "^8.3"
+requests = "^2.25"
+validators = "^0.12"
