@@ -5,7 +5,7 @@
 Constants for the AMP-tools library
 """
 
-AMP_TOOLS_VERSION = '0.0.3'
+AMP_TOOLS_VERSION = '0.0.5'
 
 AMP_INVALID_ELEMENTS = [
     'base',
